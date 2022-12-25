@@ -1,0 +1,67 @@
+<%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h2> Hello Manas</h2>
+${post.content}
+<br><br>
+<form action = "showFormForUpdate">
+<input type = "hidden" id = "postId" name =postId value= "${post.id}">
+<input type = "submit" value = "Edit Post">
+</form>
+<form action = "delete">
+<input type = "hidden" id = "postId" name =postId value= "${post.id}">
+<input type = "submit" value = "Delete Post" onclick = "if(!(confirm('Are you sure want to delete this post'))) return false">
+
+</form>
+
+<form:form action= "saveComment" modelAttribute = "post" method= "POST">
+
+<form:hidden path="id"/>
+	<table>
+		<tbody>
+			<tr>
+				<td><label>Name :</label>
+				<form:input path="name" /></td>
+			</tr>
+			<tr>
+				<td><label>Email :</label>
+				<form:input path="email" /></td>
+			</tr>
+			<tr>
+				<td><label>Comment :</label>
+				<form:input path="comment" /></td>
+			</tr>
+			<tr>
+				<td><label></label></td>
+				<td><input type = "submit" value = "Save" class = "save" /></td>
+			</tr>
+		</tbody>
+	</table>
+	<table>
+          <tr>
+             <th>Name</th>
+             <th>Email</th>
+             <th>Comment</th>
+             <th>Created At</th>
+             <th>updated At</th>
+             <th>Action</th>
+          </tr>
+          <c:forEach var="theComment" items="${commentList}">
+              <tr>
+                <td>${theComment.id}</td>
+              	<td>${theComment.name}</td>
+              	<td>${theComment.email}</td>
+              	<td>${theComment.comment}</td>
+              	<td>${theComment.createdAt}</td>
+              	<td>${theComment.updatedAt}</td>
+              	</tr>
+              	</c:forEach>
+         
+</form:form>
+</body>
+</html>

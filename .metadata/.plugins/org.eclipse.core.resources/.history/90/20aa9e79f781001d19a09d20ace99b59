@@ -1,0 +1,20 @@
+<%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>
+
+Save Post
+</title>
+
+
+</head>
+<body>
+<h2> Hello Manas</h2>
+
+<form:form action= "saveCustomer" modelAttribute = "post" method= "POST">
+</form:form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+package com.blog.comment.dao;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.blog.comments.entity.Comment;
+
+
+public class CommentDAOImpl implements CommentDAO {
+	
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	@Override
+	public List<Comment> getComments() {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query<Comment> theQuery = currentSession.createQuery("from Comment" , Comment.class);
+		
+		List<Comment> comments = theQuery.getResultList();
+		
+		return comments;
+	}
+
+	@Override
+	public void saveComment(Comment theComment) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		currentSession.saveOrUpdate(theComment);
+	}
+
+}

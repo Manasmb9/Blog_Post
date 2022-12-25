@@ -1,0 +1,28 @@
+package com.blog.comments.entity;
+
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name= "comment")
+public class Comment {
+
+	@Column(name = "id")
+	private int id;
+	@Column(name = "name")
+	private String name;
+	@Column(name = "email")
+	private String email;
+	@Column(name = "comment")
+	private String comment;
+	@Column(name = "post_id")
+	private int post_id;
+	@Column(name = "created_at")
+	private Timestamp created_at;
+	@Column(name = "updated_at")
+	private Timestamp updated_at;
+	
+}

@@ -1,0 +1,25 @@
+<%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h2> Hello Manas</h2>
+${post.content}
+	<c:forEach var = "tempPost" items = "${posts}">
+		<c:url var = "viewLink" value = "/post/showFormForView">
+			<c:param name = "postId" value = "${tempPost.id}"/>
+		</c:url>
+		<c:url var = "updateLink" value = "/post/showFormForUpdate">
+			<c:param name = "postId" value = "${tempPost.id}"/>
+		</c:url>
+		<c:url var = "deleteLink" value = "/post/delete">
+			<c:param name = "postId" value = "${tempPost.id}"/>
+		</c:url>
+			</c:forEach>
+			<a href = "${viewLink}">View</a>
+			<a href = "${updateLink}">Update</a>
+			<a href = "${deleteLink}">Delete</a>
+</body>
+</html>

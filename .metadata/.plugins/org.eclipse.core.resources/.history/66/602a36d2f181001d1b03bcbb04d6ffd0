@@ -1,0 +1,7 @@
+package com.blog.post.service;
+
+public interface PostService {
+	
+	public List<Post> getPosts();
+
+}

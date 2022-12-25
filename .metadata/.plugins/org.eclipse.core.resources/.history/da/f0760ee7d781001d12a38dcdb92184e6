@@ -1,0 +1,15 @@
+package com.blog.post.dao;
+
+import java.util.List;
+
+import com.blog.post.entity.Post;
+
+public class PostDAOImpl implements PostDAO {
+
+	@Override
+	public List<Post> getposts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

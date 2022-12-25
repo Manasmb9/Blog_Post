@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+/home/dell/BlogPost_Project/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3980760601.index
+/BlogPost_Project/src
+/home/dell/BlogPost_Project/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/801842803.index
+/BlogPost_Project/src

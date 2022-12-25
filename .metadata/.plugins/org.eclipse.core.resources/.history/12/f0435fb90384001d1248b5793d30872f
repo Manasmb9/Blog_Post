@@ -1,0 +1,36 @@
+package com.blog.comment.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.blog.comment.service.CommentService;
+import com.blog.comments.entity.Comment;
+
+
+public class CommentController {
+	
+	@Autowired
+	private CommentService commentService;
+
+	@RequestMapping("/list")
+	public String Comments(Model theModel) {
+		
+		List<Comment> theComments = commentService.getComments();
+		
+		theModel.addAttribute("comments", theComments);
+		
+		return "content-form";
+	}
+	@PostMapping("/saveComment")
+	public String savePost(@ModelAttribute("comment") Comment theComment) {
+		
+		commentService.saveComment(theComment);
+		
+		return "redirect:/post/list";
+	}
+}

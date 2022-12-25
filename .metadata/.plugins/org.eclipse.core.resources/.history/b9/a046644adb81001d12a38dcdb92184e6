@@ -1,0 +1,26 @@
+package com.blog.post.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.blog.post.dao.PostDAO;
+
+@Controller
+@RequestMapping("/post")
+public class PostController {
+
+	//need to inject the customer dao
+	@Autowired
+	private PostDAO postDAO;
+	
+	
+	@RequestMapping("/list")
+	public String Posts(Model theModel) {
+		
+		List<Post> thePosts = postDAO.getposts();
+		
+		return "list";
+	}
+}

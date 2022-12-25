@@ -1,0 +1,12 @@
+package com.blog.post.dao;
+
+import java.util.List;
+
+import com.blog.post.entity.Post;
+
+public interface PostDAO {
+
+	public List<Post> getPosts(int theId);
+
+	public void savePost(Post thePost);
+}

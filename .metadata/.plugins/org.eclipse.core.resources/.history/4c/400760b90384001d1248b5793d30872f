@@ -1,0 +1,20 @@
+package com.blog.comment.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.blog.comment.service.CommentService;
+import com.blog.comments.entity.Comment;
+
+
+public class CommentController {
+	
+	
+
+	
+}

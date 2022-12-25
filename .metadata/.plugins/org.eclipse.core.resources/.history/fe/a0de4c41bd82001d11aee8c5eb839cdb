@@ -1,0 +1,17 @@
+<%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h2> Hello Manas</h2>
+${post.content}
+<br><br>
+<form action = "showFormForUpdate">
+<input type = "hidden" id = "postId" name =postId value= "${post.id}">
+<input type = "submit" value = "Edit Post">
+
+</form>
+</body>
+</html>

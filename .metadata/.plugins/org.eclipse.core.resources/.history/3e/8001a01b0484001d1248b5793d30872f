@@ -1,0 +1,28 @@
+package com.blog.comment.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.blog.comment.dao.CommentDAO;
+import com.blog.comments.entity.Comment;
+
+
+public class CommentServiceImpl implements CommentService {
+
+	
+	
+	
+	@Override
+	public List<Comment> getComments() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void saveComment(Comment theComment) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

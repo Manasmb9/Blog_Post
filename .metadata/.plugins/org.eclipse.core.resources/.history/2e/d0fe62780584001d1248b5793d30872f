@@ -1,0 +1,25 @@
+package com.blog.tags.entity;
+
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tags")
+public class tags {
+
+	@Column(name = "id")
+	private int id;
+	
+	@Column(name= "name")
+	private String name;
+	
+	@Column(name = "created_at")
+	private Timestamp created_at;
+	
+	@Column(name = "updated_at")
+	private Timestamp updated_at;
+	
+}

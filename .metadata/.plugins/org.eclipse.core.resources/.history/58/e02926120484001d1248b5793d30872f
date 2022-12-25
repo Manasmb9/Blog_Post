@@ -1,0 +1,14 @@
+package com.blog.comment.service;
+
+import java.util.List;
+
+import com.blog.comments.entity.Comment;
+
+
+public interface CommentService {
+	
+	public List<Comment> getComments();
+
+	public void saveComment(Comment theComment);
+
+}

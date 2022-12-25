@@ -1,0 +1,36 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+		Blog Post
+</title>
+
+</head>
+<body>
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Title</th>
+			<th>Excerpt</th>
+			<th>Content</th>
+			<th>Author</th>
+			<th>Published_At</th>
+			<th>Published</th>
+			<th>Created_At</th>
+			<th>Updated_At</th>
+		</tr>
+		<:forEach var = tempPost" items = "${posts}">
+			<tr>
+			<td>
+			</tr>
+	</table>
+
+</body>
+
+</html>
+

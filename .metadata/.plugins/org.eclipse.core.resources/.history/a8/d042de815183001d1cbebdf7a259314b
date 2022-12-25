@@ -1,0 +1,22 @@
+package com.blog.comment.controller;
+
+import java.util.List;
+
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.blog.comments.entity.Comment;
+import com.blog.post.entity.Post;
+
+public class CommentController {
+
+	@RequestMapping("/list")
+	public String Comments(Model theModel) {
+		
+		List<Comment> theComments = commentService.getPosts();
+		
+		theModel.addAttribute("comments", theComments);
+		
+		return "comments";
+	}
+}

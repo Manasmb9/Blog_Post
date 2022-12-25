@@ -1,0 +1,14 @@
+package com.blog.comment.dao;
+
+import java.util.List;
+
+import com.blog.comments.entity.Comment;
+import com.blog.post.entity.Post;
+
+public class CommentDAO {
+
+	public List<Comment> getComments();
+	
+	
+
+}

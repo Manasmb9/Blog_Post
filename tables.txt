@@ -1,0 +1,25 @@
+CREATE DATABASE  IF NOT EXISTS `BlogPost` 
+use BlogPost;
+
+DROP TABLE IF EXISTS `User`
+CREATE TABLE `User`(
+`id` int auto_increment,
+`name` varchar(50),
+`email` varchar(50),
+`password` varchar(50),
+PRIMARY KEY (`id`)
+);
+
+DROP TABLE IF EXISTS `post`
+CREATE TABLE `post` (
+  `id` int  NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  `excerpt` varchar(50) DEFAULT NULL,
+  `content` varchar(50) DEFAULT NULL,
+  `author` varchar(50) DEFAULT NULL,
+  `published_at`timestamp ,
+  `is_published` boolean,
+  `created_at` timestamp ,
+  `updated_at` timestamp , 
+  PRIMARY KEY (`id`)
+);
