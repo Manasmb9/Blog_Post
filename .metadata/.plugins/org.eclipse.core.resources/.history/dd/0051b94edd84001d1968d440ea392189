@@ -1,0 +1,25 @@
+package com.blog.post.service;
+
+import com.blog.comments.entity.Comment;
+
+public class CommentServiceImpl implements CommentService {
+
+	@Override
+	public Object getComment(int commentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteComment(int commentId) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void saveComment(int postId, Comment comment, int commentId) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

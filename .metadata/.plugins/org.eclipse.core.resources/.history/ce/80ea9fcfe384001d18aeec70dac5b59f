@@ -1,0 +1,66 @@
+package com.blog.post.service;
+
+import java.sql.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.blog.comments.entity.Comment;
+import com.blog.post.dao.CommentDAO;
+import com.blog.post.entity.Post;
+
+public class CommentServiceImpl implements CommentService {
+
+	
+	@Autowired
+	private CommentDAO commentDAO;
+	
+	@Autowired
+	private PostService postService;
+	
+	
+
+	@Override
+	@Transactional
+	public void deleteComment(int id) {
+		
+		commentDAO.deleteComment(getComment(id));
+	}
+
+	@Override
+	@Transactional
+	public Comment getComment(int commentId) {
+		
+		Comment comment = commentDAO.getComment(commentId);
+		return comment;
+	}
+
+	@Override
+	public void saveComment(int postId, Comment comment, int commentId) {
+		Date currentDate = new Date(System.currentTimeMillis());
+		Post post = postService.getPost(postId);
+		System.out.println(post.getId());
+		System.out.println(post.getComments());
+		if(commentId != 0) {
+			Comment existingComment = getComment(commentId);
+			existingComment.setName(comment.getName());
+			existingComment.setEmail(comment.getEmail());
+			existingComment.setComment(comment.getComment());
+			existingComment.setUpdatedAt(currentDate);
+			commentDAO.saveComment(existingComment);
+		}
+		else {
+			if(comment.getCreatedAt()==null) {
+				
+				comment.setCreatedAt(currentDate);
+			}
+			
+			comment.setUpdatedAt(currentDate);
+			
+			post.addComment(comment);
+			System.out.println(post.getComments());
+			commentDAO.saveComment(comment);
+		}
+		
+	}
+}

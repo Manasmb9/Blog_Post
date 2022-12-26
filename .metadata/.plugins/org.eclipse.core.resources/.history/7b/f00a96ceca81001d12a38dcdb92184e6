@@ -1,8 +1,0 @@
-package com.blog.post.controller;
-
-
-@Controller
-@RequestMapping("/")
-public class PostController {
-
-}

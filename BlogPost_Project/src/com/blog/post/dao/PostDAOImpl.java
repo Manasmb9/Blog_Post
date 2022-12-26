@@ -8,8 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
-import com.blog.post.entity.Post;
+import com.blog.entity.Post;
 
 @Repository
 public class PostDAOImpl implements PostDAO {
@@ -53,6 +52,7 @@ public class PostDAOImpl implements PostDAO {
 	}
 
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void deletePost(int theId) {
 		

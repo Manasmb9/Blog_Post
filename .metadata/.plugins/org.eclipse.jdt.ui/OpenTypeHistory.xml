@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-    <typeInfo handle="=BlogPost_Project/src&lt;com.blog.comment.service{CommentService.java[CommentService" modifiers="513" timestamp="1671863594612"/>
-    <typeInfo handle="=BlogPost_Project/src&lt;com.blog.comment.dao{CommentDAO.java[CommentDAO" modifiers="513" timestamp="1671864270957"/>
+    <typeInfo handle="=BlogPost_Project/src&lt;com.blog.post.service{CommentService.java[CommentService" modifiers="513" timestamp="1672038345207"/>
 </typeInfoHistroy>

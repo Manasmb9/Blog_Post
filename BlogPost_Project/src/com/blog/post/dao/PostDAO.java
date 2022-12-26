@@ -2,7 +2,7 @@ package com.blog.post.dao;
 
 import java.util.List;
 
-import com.blog.post.entity.Post;
+import com.blog.entity.Post;
 
 public interface PostDAO {
 

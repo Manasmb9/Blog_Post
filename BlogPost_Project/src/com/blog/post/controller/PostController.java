@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.blog.post.entity.Post;
+
+import com.blog.entity.Comment;
+import com.blog.entity.Post;
+import com.blog.post.service.CommentService;
 import com.blog.post.service.PostService;
+
 
 @Controller
 @RequestMapping("/post")
@@ -19,7 +23,10 @@ public class PostController {
 
 	//need to inject the customer dao
 	@Autowired
-	private PostService postService;	
+	private PostService postService;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	@RequestMapping("/list")
 	public String Posts(Model theModel) {
@@ -45,9 +52,9 @@ public class PostController {
 		return "post-form";
 	}
 	@PostMapping("/savePost")
-	public String savePost(@ModelAttribute("post") Post thePost) {
+	public String savePost(@ModelAttribute("post") Post thePost ,int postId) {
 		
-		postService.savePost(thePost);
+		postService.savePost(thePost, postId);
 		
 		return "redirect:/post/list";
 	}
@@ -79,5 +86,41 @@ public class PostController {
 		
 		return "redirect:/post/list";
 	}
+	@RequestMapping("/addcomment")
+	public String addComment(@RequestParam("postId") int postId, Model theModel) {
+		
+		
+		Comment comment = new Comment();
+		
+		theModel.addAttribute("comment", comment);
+		
+		return "add-comment";
+	}
 	
+	@RequestMapping("/savecomment")
+	public String saveComment(Model theModel, @ModelAttribute("comment") Comment comment, @RequestParam("postId") int postId, @RequestParam("commentId") int commentId) {
+		
+		System.out.println(postId);
+		commentService.saveComment(postId, comment, commentId);
+		Post post = postService.getPost(postId);
+		theModel.addAttribute("post", post);
+		return "post-form";
+	}
+	
+//	@RequestMapping("/deletecomment")
+//	public String deleteComment(Model theModel, @RequestParam("commentId") int commentId, @RequestParam("postId") int postId){
+//		
+//		commentService.deleteComment(commentId);
+//		
+//		theModel.addAttribute(postService.getPost(postId));
+//		
+//		return "post";
+//	}
+//	
+//	@RequestMapping("/editcomment")
+//	public String editComment(Model theModel, @RequestParam("commentId") int commentId, @RequestParam("postId") int postId) {
+//		
+//		theModel.addAttribute("comment", commentService.getComment(commentId));
+//		return "add-comment-form";
+//	}
 }

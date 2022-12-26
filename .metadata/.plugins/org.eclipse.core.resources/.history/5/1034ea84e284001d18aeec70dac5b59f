@@ -1,0 +1,13 @@
+package com.blog.post.service;
+
+import com.blog.comments.entity.Comment;
+
+public interface CommentService {
+
+	Object getComment(int commentId);
+
+	void deleteComment(int commentId);
+
+	void saveComment(int postId, Comment comment, int commentId);
+
+}

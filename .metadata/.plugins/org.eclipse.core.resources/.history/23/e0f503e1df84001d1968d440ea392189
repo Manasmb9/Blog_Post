@@ -1,0 +1,90 @@
+package com.blog.post.service;
+
+import java.sql.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.blog.post.dao.PostDAO;
+import com.blog.post.entity.Post;
+
+
+@Service
+public class PostServiceImpl implements PostService {
+
+	
+	@Autowired
+	private PostDAO postDAO;
+	
+	@Override
+	@Transactional
+	public List<Post> getPosts() {
+		
+		
+		return postDAO.getPosts();
+	}
+
+
+	@Override
+	@Transactional
+	public void savePost(Post thePost, String submitType, int postId) {
+
+		Date currentDate = new Date(System.currentTimeMillis());
+		if(thePost.getContent().length() > 200) {
+			thePost.setExcerpt(thePost.getContent().substring(0, 200));
+		}
+		else {
+			thePost.setExcerpt(thePost.getContent());
+		}
+		if(postId != 0) {
+			
+			Post existingPost = getPost(postId);
+			existingPost.setTitle(thePost.getTitle());
+			existingPost.setContent(thePost.getContent());
+			existingPost.setExcerpt(thePost.getExcerpt());
+			postDAO.savePost(existingPost);
+		}
+		else {
+			
+			
+			System.out.println(currentDate);
+			
+			if(submitType.equals("publish")) {
+				
+				post.setIsPublished(true);
+				post.setPublishedAt(currentDate);
+			}
+			else {
+				
+				post.setIsPublished(false);
+			}
+			if(post.getCreatedAt()==null) {
+				
+				post.setCreatedAt(currentDate);
+			}
+			
+			post.setUpdatedAt(currentDate);
+			
+			postDAO.savePost(post);
+		}
+	}
+
+
+	@Override
+	@Transactional
+	public Post getPost(int theId) {
+		
+		return postDAO.getPost(theId);
+	}
+
+
+	@Override
+	@Transactional
+	public void deletePost(int theId) {
+		
+		postDAO.deletePost(theId);
+	}
+
+
+}

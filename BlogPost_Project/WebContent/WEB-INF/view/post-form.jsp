@@ -1,4 +1,6 @@
 <%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -14,8 +16,8 @@ Save Post
 <body>
 <h2> Hello Manas</h2>
 <form:form action= "savePost" modelAttribute = "post" method= "POST">
+<input type="hidden" name="postId" value="${post.id}">
 
-<form:hidden path="id"/>
 	<table>
 		<tbody>
 			<tr>
@@ -34,12 +36,14 @@ Save Post
 				<td><label>Author :</label>
 				<form:input path="author" /></td>
 			</tr>
+			
 			<tr>
 				<td><label></label></td>
-				<td><input type = "submit" value = "Save" class = "save" /></td>
+				<td><input type = "submit" name = "submitButton" value = "Save" class = "save" /></td>
 			</tr>
 		</tbody>
 	</table>
 </form:form>
+
 </body>
 </html>

@@ -1,0 +1,43 @@
+package com.blog.post.service;
+
+import java.sql.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.blog.comments.entity.Comment;
+import com.blog.post.dao.CommentDAO;
+import com.blog.post.entity.Post;
+
+public class CommentServiceImpl implements CommentService {
+
+	
+	@Autowired
+	private CommentDAO commentDAO;
+	
+	@Autowired
+	private PostService postService;
+	
+	
+
+	@Override
+	@Transactional
+	public void deleteComment(int id) {
+		
+		commentDAO.deleteComment(getComment(id));
+	}
+
+	@Override
+	@Transactional
+	public Comment getComment(int commentId) {
+		
+		Comment comment = commentDAO.getComment(commentId);
+		return comment;
+	}
+
+	@Override
+	public void saveComment(int postId, Comment comment, int commentId) {
+		
+		
+	}
+}

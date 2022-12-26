@@ -1,0 +1,36 @@
+package com.blog.post.dao;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.blog.comments.entity.Comment;
+
+@Repository
+public class CommentDAOImpl {
+
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	@Override
+	public void saveComment(Comment comment) {
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.saveOrUpdate(comment);
+	}
+
+	@Override
+	public void deleteComment(Comment comment) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.delete(comment);
+	}
+
+	@Override
+	public Comment getComment(int commentId) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		return currentSession.get(Comment.class, commentId);
+	}
+}

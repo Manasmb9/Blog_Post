@@ -9,7 +9,18 @@
 <title>
 		Blog Post
 </title>
-
+<style type="text/css">
+	table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	}
+	table{
+	 table-layout: fixed;
+	}
+	th,td {	
+	padding: 10px;	
+	}
+</style>
 </head>
 <body>
 <input type = "button" value= "AddPost" 
@@ -53,8 +64,6 @@ class = "add-button"/>
 					<a href = "${viewLink}">View</a></td>
 					<td>
 					<a href = "${updateLink}">Update</a>
-					
-				
 					</td>
 				</tr>
 			</c:forEach>
