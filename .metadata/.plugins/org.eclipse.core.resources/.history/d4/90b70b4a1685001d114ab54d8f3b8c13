@@ -1,0 +1,75 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+		Blog Post
+</title>
+<style type="text/css">
+	table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	}
+	table{
+	 table-layout: fixed;
+	}
+	th,td {	
+	padding: 10px;	
+	}
+</style>
+</head>
+<body>
+<input type = "button" value= "AddPost" 
+onclick = "window.location.href ='showFormForAdd';return false;" 
+class = "add-button"/>
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Title</th>
+			<th>Excerpt</th>
+			<th>Content</th>
+			<th>Author</th>
+			<th>Published_At</th>
+			<th>Published</th>
+			<th>Created_At</th>
+			<th>Updated_At</th>
+			<th>View</th>
+			<th>Action</th>
+		</tr>
+			<c:forEach var = "tempPost" items = "${post}">
+			<c:url var = "viewLink" value = "/post/showFormForView">
+			<c:param name = "postId" value = "${tempPost.id}"/>
+			</c:url>
+			<c:url var = "updateLink" value = "/post/showFormForUpdate">
+			<c:param name = "postId" value = "${tempPost.id}"/>
+			</c:url>
+			<c:url var = "deleteLink" value = "/post/delete">
+			<c:param name = "postId" value = "${tempPost.id}"/>
+			</c:url>
+				<tr>
+					<td> ${tempPost.id} </td>
+					<td> ${tempPost.title}</td>
+					<td> ${tempPost.excerpt}</td>
+					<td> ${tempPost.content}</td>
+					<td> ${tempPost.author}</td>
+					<td> ${tempPost.published_at}</td>
+					<td> ${tempPost.is_published}</td>
+					<td> ${tempPost.created_at}</td>
+					<td> ${tempPost.updated_at}</td>
+					<td>
+					<a href = "${viewLink}">View</a></td>
+					<td>
+					<a href = "${updateLink}">Update</a>
+					</td>
+				</tr>
+			</c:forEach>
+	</table>
+</body>
+
+</html>
+

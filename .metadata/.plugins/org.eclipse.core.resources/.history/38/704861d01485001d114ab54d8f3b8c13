@@ -1,0 +1,10 @@
+package com.blog.post.service;
+
+import java.util.Map;
+
+import com.blog.entity.Tag;
+
+public class TagService {
+
+	public Map<Tag, String> getTags();
+}

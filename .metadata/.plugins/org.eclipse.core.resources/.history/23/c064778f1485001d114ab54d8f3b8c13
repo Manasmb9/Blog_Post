@@ -1,0 +1,6 @@
+package com.blog.post.dao;
+
+public interface TagDAO {
+
+	public List<Tag> getTags();
+}

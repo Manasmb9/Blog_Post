@@ -1,0 +1,6 @@
+package com.blog.post.service;
+
+public class TagService {
+
+	public Map<Tag, String> getTags();
+}

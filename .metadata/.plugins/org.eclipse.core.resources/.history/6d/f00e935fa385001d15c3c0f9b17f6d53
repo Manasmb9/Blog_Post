@@ -1,0 +1,15 @@
+package com.blog.post.service;
+
+import java.util.Map;
+
+import com.blog.entity.Tag;
+
+public class TagServiceImpl implements TagService {
+
+	@Override
+	public Map<Tag, String> getTags() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

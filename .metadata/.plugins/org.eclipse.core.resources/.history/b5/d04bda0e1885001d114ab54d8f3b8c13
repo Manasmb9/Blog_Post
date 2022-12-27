@@ -1,0 +1,93 @@
+package com.blog.post.dao;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.blog.entity.Post;
+
+@Repository
+public class PostDAOImpl implements PostDAO {
+
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	@Override
+
+	public List<Post> getPosts() {
+
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		Query<Post> theQuery = currentSession.createQuery("from Post", Post.class);
+
+		List<Post> posts = theQuery.getResultList();
+
+		return posts;
+	}
+
+	@Override
+	public void savePost(Post thePost) {
+
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		currentSession.saveOrUpdate(thePost);
+
+	}
+
+	@Override
+	public Post getPost(int theId) {
+
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		Post thePost = currentSession.get(Post.class, theId);
+
+		return thePost;
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void deletePost(int theId) {
+
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		Query theQuery = currentSession.createQuery("delete from Post where id=:postId");
+
+		theQuery.setParameter("postId", theId);
+
+		theQuery.executeUpdate();
+
+	}
+
+	@Override
+	public List<Post> searchPosts(String theSearchName) {
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		Query theQuery = null;
+
+		//
+		// only search by name if theSearchName is not empty
+		//
+		if (theSearchName != null && theSearchName.trim().length() > 0) {
+			// search for firstName or lastName ... case insensitive
+			theQuery = currentSession.createQuery(
+					"from Post where lower(firstName) like :theName or lower(lastName) like :theName",
+					Post.class);
+			theQuery.setParameter("theName", "%" + theSearchName.toLowerCase() + "%");
+		} else {
+			// theSearchName is empty ... so just get all customers
+			theQuery = currentSession.createQuery("from Post", Post.class);
+		}
+
+		// execute query and get result list
+		List<Post> posts = theQuery.getResultList();
+
+		// return the results
+		return posts;
+
+	}
+
+}

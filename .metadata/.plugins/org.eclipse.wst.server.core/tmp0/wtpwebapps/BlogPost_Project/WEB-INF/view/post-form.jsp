@@ -1,4 +1,4 @@
-<%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
+    <%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
@@ -30,7 +30,7 @@ Save Post
 			</tr>
 			<tr>
 				<td><label>Content :</label>
-				<form:input path="content" /></td>
+				<form:textarea rows = "5" cols = "50" path="content" /></td>
 			</tr>
 			<tr>
 				<td><label>Author :</label>

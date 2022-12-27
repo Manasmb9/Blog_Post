@@ -78,4 +78,14 @@ public class PostServiceImpl implements PostService {
 		}
 	}
 
+
+
+
+	@Override
+	@Transactional
+	public List<Post> searchPost(String theSearchName) {
+		 return postDAO.searchPosts(theSearchName);
+		
+	}
+
 }

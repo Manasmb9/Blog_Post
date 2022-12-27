@@ -12,5 +12,7 @@ public interface PostDAO {
 
 	public Post getPost(int theId);
 
-	public void deletePost(int theId);	
+	public void deletePost(int theId);
+
+	public List<Post> searchPosts(String theSearchName);	
 }

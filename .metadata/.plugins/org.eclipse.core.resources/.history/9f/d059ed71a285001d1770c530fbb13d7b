@@ -1,0 +1,15 @@
+package com.blog.post.dao;
+
+import java.util.List;
+
+import com.blog.entity.Tag;
+
+public class TagDAOImpl implements TagDAO {
+
+	@Override
+	public List<Tag> getTags() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
